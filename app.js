@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
-app.set('view engine', 'ejs');
+app.set('views engine', 'ejs');
 app.use(express.static('public')); // Serve arquivos estáticos (CSS, etc.)
 app.use(bodyParser.urlencoded({ extended: true }));
 
