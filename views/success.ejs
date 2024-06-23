@@ -17,13 +17,13 @@
   </div>
 
   <script>
-
+    // Script para atualizar o contador regressivo
     let countdown = 5;
     setInterval(() => {
       countdown--;
       document.getElementById('countdown').textContent = countdown;
       if (countdown <= 0) {
-        window.location.href = 'https://game-mara.vercel.app/';
+        window.location.href = 'https://game-mara.vercel.app/'; // Redireciona após 5 segundos para o link desejado
       }
     }, 1000);
   </script>
