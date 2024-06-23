@@ -1,15 +1,18 @@
+const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
 const axios = require('axios');
+const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
+// Configuração do middleware
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(express.static('public')); // Serve arquivos estáticos (CSS, etc.)
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Rota inicial para exibir o formulário
@@ -33,8 +36,10 @@ app.post('/register', async (req, res) => {
     let message = response.data.msg || 'Resposta inesperada da API';
 
     if (message === 'Usuário registrado com sucesso') {
-      // Se o registro for bem-sucedido, redireciona para a página de sucesso
-      return res.redirect('/success');
+      // Se o registro for bem-sucedido, redireciona para a página de sucesso após 5 segundos
+      setTimeout(() => {
+        res.redirect('/success');
+      }, 5000);
     } else {
       res.render('form', { message });
     }
@@ -50,15 +55,10 @@ app.post('/register', async (req, res) => {
 
 // Rota para a página de sucesso
 app.get('/success', (req, res) => {
-  res.render('success'); // Renderiza a página de sucesso
+  res.render('success');
 });
 
-// Rota para o redirecionamento
-app.get('/redirect', (req, res) => {
-  const redirectURL = 'https://game-mara.vercel.app/'; // URL para onde deseja redirecionar
-  res.redirect(redirectURL); // Redireciona para o link específico
-});
-
+// Inicia o servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
