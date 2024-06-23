@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sucesso!</title>
+  <link rel="stylesheet" href="/styles/success.css">
+</head>
+<body>
+  <div class="container">
+    <div class="circle">
+      <div class="circle-inner">
+        <h2>Usuário registrado com sucesso!</h2>
+        <p>Você será redirecionado em <span id="countdown">5</span> segundos...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    let countdown = 5;
+    setInterval(() => {
+      countdown--;
+      document.getElementById('countdown').textContent = countdown;
+      if (countdown <= 0) {
+        window.location.href = '/redirect'; 
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

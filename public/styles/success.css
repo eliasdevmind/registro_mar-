@@ -1,0 +1,68 @@
+/* Estilos para a página de sucesso */
+
+/* Reset de estilos básicos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo para o corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #b90edb;
+}
+
+/* Estilo para o container centralizado */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Estilo para o círculo */
+.circle {
+  width: 30rem;
+  height: 30rem;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para o conteúdo dentro do círculo */
+.circle-inner {
+  text-align: center;
+}
+
+/* Estilo para o título */
+.circle-inner h2 {
+  color: #333;
+  font-size: 3rem; /* Tamanho do texto aumentado */
+  margin-bottom: 10px;
+}
+
+/* Estilo para o contador regressivo */
+.circle-inner p {
+  color: #666;
+  font-size: 1.5rem; /* Tamanho do texto aumentado */
+}
+
+/* Estilos responsivos */
+@media (max-width: 625px) {
+  .circle {
+    width: 500px;
+    height: 500px;
+  }
+
+  .circle-inner h2 {
+    font-size: 4rem;
+  }
+
+  .circle-inner p {
+    font-size: 1.5rem;
+  }
+}
