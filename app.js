@@ -15,9 +15,15 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Middleware para disponibilizar variáveis de ambiente globalmente
+app.use((req, res, next) => {
+  res.locals.API_URL = process.env.URL_API;
+  next();
+});
+
 // Rota inicial para exibir o formulário
 app.get('/', (req, res) => {
-  res.render('form');
+  res.render('form', { apiUrl: res.locals.API_URL });
 });
 
 // Rota para processar o registro
