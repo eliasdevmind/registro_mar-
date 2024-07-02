@@ -25,21 +25,22 @@ app.post('/register', async (req, res) => {
   const { email, username, password } = req.body;
 
   try {
+    const axiosConfig = {
+      timeout: 10000, // Timeout de 10 segundos
+    };
+
     const response = await axios.post(process.env.URL_API, {
       email,
       username,
       password
-    });
+    }, axiosConfig);
 
     console.log('API Response:', response.data);
 
     let message = response.data.msg || 'Resposta inesperada da API';
 
     if (message === 'Usuário registrado com sucesso') {
-      // Se o registro for bem-sucedido, redireciona para a página de sucesso após 5 segundos
-      setTimeout(() => {
-        res.redirect('/success');
-      }, 5000);
+      res.redirect('/success');
     } else {
       res.render('form', { message });
     }
